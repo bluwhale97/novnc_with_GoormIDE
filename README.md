@@ -1,4 +1,9 @@
 # novnc_with_GoormIDE
+<h2>설치</h2>
+<div>
+ wget "https://raw.githubusercontent.com/currentmgl/novnc_with_GoormIDE/master/install_novnc.sh" -O install_nonvc.sh; chmod +x install_novnc.sh; ./install_novnc.sh
+</div>
+
 GoormIDE를 사용한 novnc세팅 입니다.
 
 GitLab의 안정인님의 소스를 참고하였으며, 가장 간편하게 할수 있도록 했습니다.
