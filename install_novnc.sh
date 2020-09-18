@@ -22,25 +22,20 @@ apt-get install -f -y
 apt-get install fonts-nanum fonts-nanum-* language-selector-common -y
 apt-get install `check-language-support -l ko` -y
 
-adduser $USERNAME
-usermod -aG sudo $USERNAME
-
 echo -e "\nLANG=\"ko_KR.UTF-8\"\nLANGUAGE=\"ko:en\"" > /etc/default/locale
-echo -e "\nLANG=\"ko_KR.UTF-8\"\nLANGUAGE=\"ko:en\"" > /.pam_environment
+echo -e "\nLANG=\"ko_KR.UTF-8\"\nLANGUAGE=\"ko:en\"" > /root/.pam_environment
 
 # Configure VNC Server to run with port 5900
-su -c "vncserver -geometry 1280x720 :0" $USERNAME 
-su -c "vncserver -kill :0" $USERNAME
+vncserver -geometry 1280x720 :0
+vncserver -kill :0
 
-cd /home/$USERNAME/.vnc
+cd /root/.vnc
 mv xstartup xstartup.original
 echo "/usr/bin/lxsession -s LXDE &" > xstartup
-chown $USERNAME.$USERNAME xstartup
 chmod +x xstartup
 
 # Configure noVNC server
-cd /home/$USERNAME/
 apt-get install novnc -y
-echo -e "rm -rf /tmp/.X0-lock /tmp/.X11-unix\nsu -c \"vncserver :0 -geometry 1680x920\" $USERNAME\nsu -c \"websockify -D --web=/usr/share/novnc/ 80 localhost:5900\" current" > start_vnc.sh
+echo -e "rm -rf /tmp/.X0-lock /tmp/.X11-unix\nvncserver :0 -geometry 1680x920\nwebsockify -D --web=/usr/share/novnc/ 80 localhost:5900" > start_vnc.sh
 chmod +x start_vnc.sh
 ./start_vnc.sh
