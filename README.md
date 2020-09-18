@@ -4,7 +4,7 @@ GoormIDE를 사용한 novnc세팅 입니다.
 GitLab의 안정인님의 소스를 참고하였으며, 가장 간편하게 할수 있도록 했습니다.
 
 참고 목록
-https://git.blending.kr/snippets/12
+https://git.blending.kr/snippets/12<br>
 https://chhanz.github.io/linux/2019/12/13/linux-configure-novnc/ 
 
 간단히 설명하자면,
